@@ -5,6 +5,7 @@ import axios from "axios";
 import url from "modules/js/API.js";
 import { InfiniteScroll } from "mint-ui";
 import bottomNav from 'components/bottomNav.vue'
+import swiper from 'components/swiper.vue'
 
 Vue.use(InfiniteScroll);
 
@@ -15,7 +16,8 @@ new Vue({
     pageNum: 1,
     pageSize: 6,
     loading: false,
-    allLoaded: false
+    allLoaded: false,
+    banner: null
   },
   methods: {
     getHotList() {
@@ -45,12 +47,19 @@ new Vue({
           console.log('api错误',err)
           this.loading = false;
         })
+    },
+    getBanner(){
+      axios.get(url.banner).then((response)=>{
+        this.banner = response.data.lists
+      })
     }
   },
   components:{
-    'bottom-nav': bottomNav
+    'bottom-nav': bottomNav,
+    swiper
   },
   created() {
     this.getHotList();
+    this.getBanner()
   }
 });

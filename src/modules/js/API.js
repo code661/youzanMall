@@ -1,7 +1,8 @@
-let host = 'http://rap2api.taobao.org/app/mock/7058/'
+let host = 'http://rap2api.taobao.org/app/mock/19448/'
 
 let url = {
-  hotList: 'index/hotLists'
+  hotList: 'index/hotLists',
+  banner: 'index/banner'
 }
 
 for (let key in url){
