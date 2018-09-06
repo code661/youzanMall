@@ -4,6 +4,7 @@ import Vue from "vue";
 import axios from "axios";
 import url from "modules/js/API.js";
 import { InfiniteScroll } from "mint-ui";
+import bottomNav from 'components/bottomNav.vue'
 
 Vue.use(InfiniteScroll);
 
@@ -45,6 +46,9 @@ new Vue({
           this.loading = false;
         })
     }
+  },
+  components:{
+    'bottom-nav': bottomNav
   },
   created() {
     this.getHotList();
