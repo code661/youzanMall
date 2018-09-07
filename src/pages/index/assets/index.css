@@ -1034,6 +1034,9 @@ only screen and (min-device-pixel-ratio:1.5) {
   pointer-events: none;
   border-right: 1px solid #e5e5e5
 }
+.goods-main-photo {
+  width: 100%;
+}
 
 .fadeIn {
   -webkit-animation-duration: 1s;
