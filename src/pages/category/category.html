@@ -79,7 +79,7 @@
                         </div>
                         <div class="detail">
                           <div class="title">{{ good.name }}</div>
-                          <div class="price">￥{{ good.price }}</div>
+                          <div class="price">￥{{ good.price|currencyFormat }}</div>
                           <div class="recommend">
                             <span>推荐值:</span>
                             <span>{{ good.recommend }}</span>
@@ -138,15 +138,19 @@
               <h3 class="category-title"> 热门分类 </h3>
               <ul class="category-content">
                 <li class="category-item js-category-item"
-                v-for='hotCategory in subList.categoryList'
-                :data-item-id="hotCategory.id"
-                :data-item-name="hotCategory.name"
-                :key='hotCategory.id'
+                  v-for='hotCategory in subList.categoryList'
+                  :data-item-id="hotCategory.id"
+                  :data-item-name="hotCategory.name"
+                  :key='hotCategory.id'
+                  @click='toSearch(hotCategory.id, hotCategory.name)'
                 >
-                  <img :src="hotCategory.img"
-                    alt="水果" class="category-img">
+                  <img
+                    :src="hotCategory.img"
+                    :alt="hotCategory.name"
+                    class="category-img">
                   <span class="category-item-name">
-                    {{ hotCategory.name }} </span>
+                    {{ hotCategory.name }} 
+                  </span>
                 </li>
               </ul>
             </div>

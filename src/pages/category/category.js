@@ -2,14 +2,11 @@ import 'modules/css/common.css'
 import './category.css'
 import url from 'modules/js/API.js'
 import Vue from 'vue'
-import bottomNav from 'components/bottomNav.vue'
+import mixin from 'modules/js/mixin.js'
 import axios from 'axios'
 
 new Vue({
   el: '#app',
-  components: {
-    'bottom-nav': bottomNav,
-  },
   data:{
     topList: null,
     currentTabIndex: 0,
@@ -44,10 +41,14 @@ new Vue({
         .then((response)=>{
           this.subList = response.data.data
         })
+    },
+    toSearch(id, keyword){
+      location.href = `${location.origin}/search.html?keyword=${keyword}&id=${id}`
     }
   },
   created(){
     this.getTopList()
     this.getRankData()
-  }
+  },
+  mixins:[mixin]
 })

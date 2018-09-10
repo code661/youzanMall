@@ -4,8 +4,8 @@ import Vue from "vue";
 import axios from "axios";
 import url from "modules/js/API.js";
 import { InfiniteScroll } from "mint-ui";
-import bottomNav from 'components/bottomNav.vue'
-import swiper from 'components/swiper.vue'
+import swiper from "components/swiper.vue";
+import mixin from 'modules/js/mixin.js'
 
 Vue.use(InfiniteScroll);
 
@@ -30,10 +30,12 @@ new Vue({
           }
         })
         .then(response => {
-          if(this.allLoaded){return}
+          if (this.allLoaded) {
+            return;
+          }
           let responseList = response.data.lists;
-          if (responseList < this.pageSize){
-            this.allLoaded = true
+          if (responseList < this.pageSize) {
+            this.allLoaded = true;
           }
           if (this.hotList) {
             this.hotList = this.hotList.concat(responseList);
@@ -43,23 +45,23 @@ new Vue({
           this.loading = false;
           this.pageNum++;
         })
-        .catch((err)=>{
-          console.log('api错误',err)
+        .catch(err => {
+          console.log("api错误", err);
           this.loading = false;
-        })
+        });
     },
-    getBanner(){
-      axios.get(url.banner).then((response)=>{
-        this.banner = response.data.lists
-      })
+    getBanner() {
+      axios.get(url.banner).then(response => {
+        this.banner = response.data.lists;
+      });
     }
   },
-  components:{
-    'bottom-nav': bottomNav,
+  components: {
     swiper
   },
   created() {
     this.getHotList();
-    this.getBanner()
-  }
+    this.getBanner();
+  },
+  mixins:[mixin]
 });
