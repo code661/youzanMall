@@ -17,6 +17,10 @@
 </template>
 
 <script>
+import qs from 'qs'
+
+var {nav} = qs.parse(location.search.substr(1))
+
 let navConfig = [
   {
     href: "index.html",
@@ -44,7 +48,7 @@ export default {
   data(){
     return {
       navConfig: navConfig,
-      currentNavIndex: parseInt(location.search.substring(location.search.length -1)) || 0
+      currentNavIndex: parseInt(nav) || 0
     }
   },
   methods:{
