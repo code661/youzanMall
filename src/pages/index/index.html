@@ -28,7 +28,7 @@
   <div id='app'>
     <div class="container with-bottom-nav" style="min-height: 667px;">
       <div class="content">
-        <swiper :banner='banner'></swiper v-if='banner'>
+        <swiper :banner='banner' v-if='banner'></swiper>
         <div class="section-title">优店推荐</div>
         <div class="section-content shops">
           <div class="shop-wrap">
@@ -62,7 +62,7 @@
           <ul class="js-list js-lazy" data-src="" v-infinite-scroll="getHotList" infinite-scroll-disabled="loading" infinite-scroll-distance="30">
             <li v-for='item in hotList' :key='item.id'>
               <div class="goods-item">
-                <a href="">
+                <a :href="'/goods.html?id='+ item.id">
                   <div class="thumb img-box">
                     <img class="fadeIn" :src="item.img">
                   </div>
