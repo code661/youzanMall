@@ -6,7 +6,10 @@ let url = {
   topList: 'category/topList',
   sublList: 'category/subList',
   rank: 'category/rank',
-  search: 'search/list'
+  search: 'search/list',
+  goodsDetail: 'goods/detail',
+  deal: 'goods/deal',
+  addCart: 'cart/add'
 }
 
 for (let key in url){

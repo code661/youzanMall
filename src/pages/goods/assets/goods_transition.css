@@ -1,0 +1,16 @@
+.sku-fade-enter-active,.sku-fade-leave-active {
+  transition: all 300ms ease;
+  transform: translateY(0)
+}
+
+.sku-fade-enter,.sku-fade-leave-to {
+  transform: translateY(100%)
+}
+
+.musk-fade-enter-active,.musk-fade-leave-active{
+  transition: all 300ms;
+  opacity: 1
+}
+.musk-fade-enter,.musk-fade-leave-to {
+  opacity: 0;
+}
