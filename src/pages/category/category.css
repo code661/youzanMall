@@ -855,7 +855,8 @@ only screen and (min-device-pixel-ratio:1.5) {
   width: 60px;
   height: 60px;
   display: inline-block;
-  text-align: center
+  text-align: center;
+  cursor: pointer;
 }
 
 .main-content .category-item-name {

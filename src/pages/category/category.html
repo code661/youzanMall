@@ -72,7 +72,7 @@
                   </div>
                   <ul>
                     <li class="goods-item" v-for='(good,index) in rank.hotGoods' :key='good.id'>
-                      <a href="">
+                      <a :href="'/goods.html?id='+ good.id">
                         <div class="thumb badge center-img">
                           <img :src="good.img">
                           <span class="num">{{ index+1 }}</span>
