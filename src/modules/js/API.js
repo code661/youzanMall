@@ -9,7 +9,12 @@ let url = {
   search: 'search/list',
   goodsDetail: 'goods/detail',
   deal: 'goods/deal',
-  addCart: 'cart/add'
+  addCart: 'cart/add',
+  cartList: 'cart/list',
+  minus: 'cart/minus',
+  plus: 'cart/plus',
+  remove: 'cart/remove',
+  mrremove: 'cart/mrremove'
 }
 
 for (let key in url){
