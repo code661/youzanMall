@@ -3,9 +3,8 @@ import "./assets/cart_base.css";
 import "./assets/cart_trade.css";
 import "modules/css/common.css";
 import Vue from "vue";
-import url from "modules/js/API.js";
-import axios from "axios";
 import mixin from "modules/js/mixin.js";
+import Cart from "modules/js/cartService.js"
 
 new Vue({
   el: ".container",
@@ -84,7 +83,7 @@ new Vue({
   },
   methods: {
     getCartList() {
-      axios.get(url.cartList).then(res => {
+      Cart.list().then(res => {
         let resData = res.data.cartList;
         resData.map(shop => {
           shop.checked = true;
@@ -143,7 +142,7 @@ new Vue({
     removeConfirm() {
       if (this.removeMsg === "是否删除该商品") {
         let { shop, shopIndex, good, goodIndex } = this.removeData;
-        axios.post(url.remove, { id: good.id }).then(res => {
+        Cart.remove(good.id).then(res => {
           if (res.data.status) {
             shop.goodsList.splice(goodIndex, 1);
             if (!shop.goodsList.length) {
@@ -158,7 +157,7 @@ new Vue({
         this.editModeSelectList.map(good => {
           ids.push(good.id);
         });
-        axios.post(url.mrremove, { ids }).then(res => {
+        Cart.mrremove(ids).then(res => {
           if (res.status === 200) {
             let arr = [];
             this.editingShop.goodsList.map(good => {
@@ -190,17 +189,13 @@ new Vue({
     },
     minus(good) {
       if (good.number === 1) return;
-      axios.post(url.minus, { id: good.id, number: good.number }).then(res => {
-        if (res.data.status === 200) {
-          good.number--;
-        }
+      Cart.minus(good.id).then(res => {
+        good.number--;
       });
     },
     plus(good) {
-      axios.post(url.plus, { id: good.id, number: good.number }).then(res => {
-        if (res.data.status === 200) {
-          good.number++;
-        }
+      Cart.plus(good.id).then(res => {
+        good.number++;
       });
     }
   },
