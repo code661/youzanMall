@@ -14,7 +14,13 @@ let url = {
   minus: 'cart/minus',
   plus: 'cart/plus',
   remove: 'cart/remove',
-  mrremove: 'cart/mrremove'
+  mrremove: 'cart/mrremove',
+  addAddress: 'address/add',
+  removeAddress: 'address/remove',
+  addressList: 'address/list',
+  updateAddress: 'address/update',
+  setDefault: 'address/setDefault'
+
 }
 
 for (let key in url){
