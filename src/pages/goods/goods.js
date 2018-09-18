@@ -67,21 +67,28 @@ new Vue({
       this.goodNum += num;
     },
     addToCart() {
-      axios.post(url.addCart, { id: this.id, num: this.goodNum }).then(res => {
-        if (res.data.status === 200) {
-          this.addedToCart = true;
-          this.SKUisShow = false;
-          this.showAddedMsg = true;
-          setTimeout(() => {
-            this.showAddedMsg = false;
-          }, 800);
-        }
-      }).catch((err)=>{console.log(err)});
+      axios
+        .post(url.addCart, { id: this.id, num: this.goodNum })
+        .then(res => {
+          if (res.data.status === 200) {
+            this.addedToCart = true;
+            this.SKUisShow = false;
+            this.showAddedMsg = true;
+            setTimeout(() => {
+              this.showAddedMsg = false;
+            }, 800);
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   },
   watch: {
     SKUisShow(val) {
+      let html = document.querySelector("html");
       document.body.style.overflow = val ? "hidden" : "auto";
+      html.style.overflow = val ? "hidden" : "auto";
     }
   },
   created() {
