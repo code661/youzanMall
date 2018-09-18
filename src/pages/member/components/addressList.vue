@@ -18,23 +18,20 @@
 import Address from "modules/js/addressService.js"
 
 export default {
-  data(){
-    return {
-      addressList: null,
+  computed:{
+    addressList(){
+      return this.$store.state.list
     }
   },
   methods:{
     editAddress(item){
       this.$router.push({path: "form",query:{type:"edit",instance:item}})
     },
-    getAddressList(){
-      Address.list().then((res)=>{
-        this.addressList = res.data.lists
-      })
-    }
   },
   created(){
-    this.getAddressList()
+    if(!this.addressList){
+      this.$store.dispatch('initAction')
+    }
   }
 };
 </script>
