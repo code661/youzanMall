@@ -20,7 +20,6 @@ let url = {
   addressList: 'address/list',
   updateAddress: 'address/update',
   setDefault: 'address/setDefault'
-
 }
 
 for (let key in url){
